@@ -1,0 +1,2 @@
+Data Structures : Different way of storing data in a computer.
+Algorithms : Operations on different data structures

@@ -1,0 +1,7 @@
+JAVA monitoring tools:
+======================
+1.Visual VM 
+	- Monitor Memory/CPU/Threads
+	- Analyse Heap Dump/Thread Dump.
+
+2. Jhat - JAVA heap analysys tool

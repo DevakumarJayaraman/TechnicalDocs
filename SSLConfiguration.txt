@@ -1,0 +1,106 @@
+Generate Client keystore:
+=======================
+	c:\Program Files\Java\jdk1.8.0_101\bin>keytool.exe -genkey -keypass password -storepass password -keystore d:\ssl\client-keystore.jks
+	What is your first and last name?
+	  [Unknown]:  client-host
+	What is the name of your organizational unit?
+	  [Unknown]:  DJ
+	What is the name of your organization?
+	  [Unknown]:  DJ
+	What is the name of your City or Locality?
+	  [Unknown]:  Singapore
+	What is the name of your State or Province?
+	  [Unknown]:  Singapore
+	What is the two-letter country code for this unit?
+	  [Unknown]:  SG
+	Is CN=client-host, OU=DJ, O=DJ, L=Singapore, ST=Singapore, C=SG correct?
+	  [no]:  Y
+	  
+Generate Server keystore:
+========================
+	c:\Program Files\Java\jdk1.8.0_101\bin>keytool.exe -genkey -keypass password -storepass password -keystore d:\ssl\server-keystore.jks
+	What is your first and last name?
+	  [Unknown]:  server-host
+	What is the name of your organizational unit?
+	  [Unknown]:  DJ
+	What is the name of your organization?
+	  [Unknown]:  DJ
+	What is the name of your City or Locality?
+	  [Unknown]:  Chennai
+	What is the name of your State or Province?
+	  [Unknown]:  India
+	What is the two-letter country code for this unit?
+	  [Unknown]:  IN
+	Is CN=server-host, OU=DJ, O=DJ, L=Chennai, ST=India, C=IN correct?
+	  [no]:  Y
+
+
+Export client certificate:
+======================
+	c:\Program Files\Java\jdk1.8.0_101\bin>keytool.exe -export -storepass password -file d:\ssl\client-public-cert.cer -keystore d:\ssl\client-keystore.jks
+	Certificate stored in file <d:\ssl\client-public-cert.cer>
+
+	Export server certificate:
+	======================
+	c:\Program Files\Java\jdk1.8.0_101\bin>keytool.exe -export -storepass password -file d:\ssl\server-public-cert.cer -keystore d:\ssl\server-keystore.jks
+	Certificate stored in file <d:\ssl\server-public-cert.cer>
+
+Add Client Certificate to Server Trust store:
+========================================
+	c:\Program Files\Java\jdk1.8.0_101\bin>keytool -import -v -trustcacerts -file d:\ssl\client-public-cert.cer -keystore d:\ssl\server-truststore.jks
+	Enter keystore password:
+	Re-enter new password:
+	Owner: CN=client-host, OU=DJ, O=DJ, L=Singapore, ST=Singapore, C=SG
+	Issuer: CN=client-host, OU=DJ, O=DJ, L=Singapore, ST=Singapore, C=SG
+	Serial number: 5d34c6cb
+	Valid from: Sun Sep 09 23:44:57 SGT 2018 until: Sat Dec 08 23:44:57 SGT 2018
+	Certificate fingerprints:
+			 MD5:  75:E1:12:DA:9B:D6:D9:86:3F:35:D1:2F:A9:B0:CD:7F
+			 SHA1: 22:B8:E0:B1:7A:66:B3:B8:6B:98:30:8F:4D:9D:10:6C:66:A2:CA:CA
+			 SHA256: 57:35:2C:0C:BE:03:F1:91:82:4A:70:E0:3F:96:19:10:97:73:5F:B9:89:C7:AD:2E:64:4F:AC:D5:60:4F:C8:12
+			 Signature algorithm name: SHA1withDSA
+			 Version: 3
+
+	Extensions:
+
+	#1: ObjectId: 2.5.29.14 Criticality=false
+	SubjectKeyIdentifier [
+	KeyIdentifier [
+	0000: 07 3E BD C7 03 79 3A B9   1B 1D D3 7A 02 DF 07 84  .>...y:....z....
+	0010: 50 8C 64 E7                                        P.d.
+	]
+	]
+
+	Trust this certificate? [no]:  Y
+	Certificate was added to keystore
+	[Storing d:\ssl\server-truststore.jks]
+
+Add Server Certificate to Client Trust store:
+========================================
+	c:\Program Files\Java\jdk1.8.0_101\bin>keytool -import -v -trustcacerts -file d:\ssl\server-public-cert.cer -keystore d:\ssl\client-truststore.jks
+	Enter keystore password:
+	Re-enter new password:
+	Owner: CN=server-host, OU=DJ, O=DJ, L=Chennai, ST=India, C=IN
+	Issuer: CN=server-host, OU=DJ, O=DJ, L=Chennai, ST=India, C=IN
+	Serial number: 632ba029
+	Valid from: Sun Sep 09 23:47:08 SGT 2018 until: Sat Dec 08 23:47:08 SGT 2018
+	Certificate fingerprints:
+			 MD5:  90:B3:DB:13:1A:0F:50:B2:07:7A:F6:A5:97:D9:C6:EF
+			 SHA1: 25:44:92:5F:53:CF:5B:07:7D:06:F0:61:FD:8B:3E:9E:DC:BB:BB:A3
+			 SHA256: 31:E3:49:EA:3F:3E:BC:81:2E:F1:AB:9D:50:F8:47:5D:A9:6E:A8:2C:FA:96:F7:D2:F0:65:63:84:2D:E5:7D:91
+			 Signature algorithm name: SHA1withDSA
+			 Version: 3
+
+	Extensions:
+
+	#1: ObjectId: 2.5.29.14 Criticality=false
+	SubjectKeyIdentifier [
+	KeyIdentifier [
+	0000: B4 AD B4 65 DA 81 84 6E   C6 37 16 83 A4 57 07 E6  ...e...n.7...W..
+	0010: 54 66 15 87                                        Tf..
+	]
+	]
+
+	Trust this certificate? [no]:  Y
+	Certificate was added to keystore
+	[Storing d:\ssl\client-truststore.jks]

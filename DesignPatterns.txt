@@ -1,0 +1,32 @@
+OOPS concepts:
+==============
+Encapsulation (Protecting instance variables accessed outside the class)
+Polymorphism (Overloading/Overriding)
+Abstraction
+Inheritance (Extending class)
+Composition
+
+Design Patterns:
+================
+Strategy Pattern:
+-----------------
+	- Define a family of algorithms and choose a one at runtime dynamically.
+	- Usage:User assignment strategy. Based on different types of assignment, select assignment algorithm.
+
+Decorator Pattern:
+------------------
+	- Enhance functionality of an object dynamically.
+	- Adding functionality to an object without modifying existing code
+	- Component is an object to be decorated.
+	- Decorator has a component to be decorated and decorator is a component which can also be decorated.
+
+Observer Pattern:
+-----------------
+	- Pull/Push Model.
+	- Objects registers itself to an observer.
+	- When an event occures at observer then notifies all the registered objects.
+	- Usage:Spring EventListeners.
+
+Visitor Pattern:
+----------------
+	- Perform an operation on the family of objects without altering object's class structure.
