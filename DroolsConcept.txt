@@ -1,0 +1,20 @@
+Drool Components:
+=================
+1) ReteOO alogorithm - Developed in Drools 5.x by extending Rete algorithm.
+2) PHREAK algorith - Introduced in Drools 6.x, Lazy algorithm.
+3) Production Memory - The place where rules are stored.
+4) Working Memory - The place where the facts are stored.
+5) Agenda - RuleMatch with matching rule and fact is created and placed.
+6) Rule Execution - Rule execution takes place until agenda is clear.
+7) Conflict - If there is more than one RuleMatch is placed in agenda then it means a conflict.
+8) Conflict Resolution Strategy. - 
+9) Node Types:
+==============
+	a) Rete Node - Root Node.
+	b) ObjectTypeNode - Node per each Object Type.
+	c) Alpha Node - Conditions with literals.
+	d) Bete Node
+		- Join Node - Conditions with other objects.
+		- Not Node - Represents Not condition
+		- Exist Node - Represents exist condition.
+	e) Terminal Node - Node representing action part.

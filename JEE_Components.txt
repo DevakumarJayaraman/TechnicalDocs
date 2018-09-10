@@ -1,0 +1,13 @@
+J2EE components:
+================
+JPA API  - JAVA Persistence API
+JTA API  - JAVA Transaction API
+JMS API  - JAVA Messaging Service API http://docs.oracle.com/javaee/6/tutorial/doc/bnceh.html
+JDBC API - JAVA Database Connectivity API
+JNDI API - JAVA Naming and Directory Interface
+JAXP     - JAVA API for XML processing
+JAXB     - JAVA Architecture for XML Binding
+JAX-WS   - JAVA API for XML based Web Services
+JAX-RS   - JAVA API for RESTful services
+JAX-RPC  - Java API for XML-based Remote Procedure Call
+JAAS     - JAVA Authendication and Authorization Service
